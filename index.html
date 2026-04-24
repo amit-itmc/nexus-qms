@@ -4,11 +4,23 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Google AI Studio App</title>
-    <script type="module" crossorigin src="/nexus-qms/assets/index-CDjdtmRi.js"></script>
+    <script type="module" crossorigin src="/nexus-qms/assets/index-Cq5kiOlk.js"></script>
     <link rel="stylesheet" crossorigin href="/nexus-qms/assets/index-CUlWVPah.css">
   </head>
+
   <body>
     <div id="root"></div>
+
+
+    <!-- ✅ ADD SCRIPT HERE (VERY IMPORTANT POSITION) -->
+    <script>
+      (function() {
+        const redirect = sessionStorage.redirect;
+        delete sessionStorage.redirect;
+        if (redirect && redirect !== location.href) {
+          history.replaceState(null, null, redirect);
+        }
+      })();
+    </script>
   </body>
 </html>
-
