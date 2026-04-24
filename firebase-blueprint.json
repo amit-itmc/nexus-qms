@@ -1,0 +1,114 @@
+{
+  "entities": {
+    "User": {
+      "title": "User Profile",
+      "description": "User account and role information",
+      "type": "object",
+      "properties": {
+        "email": { "type": "string", "format": "email" },
+        "displayName": { "type": "string" },
+        "role": { "type": "string", "enum": ["Admin", "QA", "Manager", "User"] },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["email", "role"]
+    },
+    "Deviation": {
+      "title": "Deviation",
+      "description": "Record of an unplanned departure from standard procedures",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "category": { "type": "string", "enum": ["Minor", "Major", "Critical"] },
+        "status": { "type": "string", "enum": ["Draft", "Open", "Investigation", "QA Review", "Closed"] },
+        "rootCause": { "type": "string" },
+        "riskImpact": { "type": "string" },
+        "attachments": { "type": "array", "items": { "type": "string" } },
+        "createdBy": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" },
+        "closedAt": { "type": "string", "format": "date-time" },
+        "slaDeadline": { "type": "string", "format": "date-time" }
+      },
+      "required": ["title", "category", "status", "createdBy"]
+    },
+    "ChangeControl": {
+      "title": "Change Control",
+      "description": "Proposal for a planned change to a process or system",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "type": { "type": "string", "enum": ["Temporary", "Permanent", "Emergency"] },
+        "status": { "type": "string", "enum": ["Initiated", "Impact Assessment", "In Review", "Approved", "Implementation", "Post-Review", "Closed"] },
+        "impactQuality": { "type": "string" },
+        "impactRegulatory": { "type": "string" },
+        "impactCost": { "type": "string" },
+        "milestones": { "type": "array" },
+        "createdBy": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["title", "type", "status", "createdBy"]
+    },
+    "CAPA": {
+      "title": "CAPA",
+      "description": "Corrective and Preventive Actions",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "type": { "type": "string", "enum": ["Correction", "Corrective Action", "Preventive Action"] },
+        "ownerId": { "type": "string" },
+        "dueDate": { "type": "string", "format": "date-time" },
+        "status": { "type": "string", "enum": ["Open", "In Progress", "Verification", "Closed"] },
+        "effectivenessScore": { "type": "number" },
+        "isRecurrent": { "type": "boolean" },
+        "linkedId": { "type": "string", "description": "ID of linked Deviation or Change Control" },
+        "createdBy": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["title", "type", "ownerId", "status", "createdBy"]
+    },
+    "Risk": {
+      "title": "Risk",
+      "description": "Risk Assessment item",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "severity": { "type": "number" },
+        "probability": { "type": "number" },
+        "score": { "type": "number" },
+        "mitigationPlan": { "type": "string" },
+        "status": { "type": "string", "enum": ["Open", "Mitigated", "Monitoring", "Closed"] },
+        "createdBy": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["title", "severity", "probability", "score", "status"]
+    }
+  },
+  "firestore": {
+    "users": {
+      "schema": "User",
+      "description": "User profiles"
+    },
+    "deviations": {
+      "schema": "Deviation",
+      "description": "Deviation records"
+    },
+    "changeControls": {
+      "schema": "ChangeControl",
+      "description": "Change Control records"
+    },
+    "capas": {
+      "schema": "CAPA",
+      "description": "CAPA records"
+    },
+    "risks": {
+      "schema": "Risk",
+      "description": "Risk management records"
+    }
+  }
+}
