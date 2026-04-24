@@ -107,9 +107,12 @@ import { initializeApp } from "firebase/app";
 
 // 🔥 make sure this is YOUR config
 const firebaseConfig = {
-  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  apiKey: "AIzaSyBJWsq2AM2OWJnZs_GhER6XJ5MrEzuy5p0",
   authDomain: "client-af507.firebaseapp.com",
   projectId: "client-af507",
+  storageBucket: "client-af507.firebasestorage.app",
+  messagingSenderId: "44716182684",
+  appId: "1:44716182684:web:23bc6306c0ed719910b159"
 };
 
 const app = initializeApp(firebaseConfig);
