@@ -1452,7 +1452,7 @@ Please change the parent <Route path="${C}"> to <Route path="${C==="/"?"*":`${C}
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */al($Z,jZ,"app");const KZ={apiKey:void 0,authDomain:"client-af507.firebaseapp.com",projectId:"client-af507"},WZ=xC(KZ),cO=HG(WZ),$G=x.createContext(null);function YZ({children:t}){const[e,n]=x.useState(null),[r,i]=x.useState(!0);x.useEffect(()=>{const s=DQ(cO,l=>{console.log("Auth state:",l),n(l),i(!1)});return()=>s()},[]);const o=async()=>{const s=new Os;await ZQ(cO,s)};return L.jsx($G.Provider,{value:{user:e,loading:r,signIn:o},children:t})}const nm=()=>x.useContext($G);/**
+ */al($Z,jZ,"app");const KZ={apiKey:"AIzaSyBJWsq2AM2OWJnZs_GhER6XJ5MrEzuy5p0",authDomain:"client-af507.firebaseapp.com",projectId:"client-af507",storageBucket:"client-af507.firebasestorage.app",messagingSenderId:"44716182684",appId:"1:44716182684:web:23bc6306c0ed719910b159"},WZ=xC(KZ),cO=HG(WZ),$G=x.createContext(null);function YZ({children:t}){const[e,n]=x.useState(null),[r,i]=x.useState(!0);x.useEffect(()=>{const s=DQ(cO,l=>{console.log("Auth state:",l),n(l),i(!1)});return()=>s()},[]);const o=async()=>{const s=new Os;await ZQ(cO,s)};return L.jsx($G.Provider,{value:{user:e,loading:r,signIn:o},children:t})}const nm=()=>x.useContext($G);/**
  * @license lucide-react v0.546.0 - ISC
  *
  * This source code is licensed under the ISC license.
