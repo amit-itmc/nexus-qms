@@ -37,8 +37,12 @@ function ProtectedRoute({ children }: { children: React.ReactNode }) {
 }
 
 function Login() {
-  const { signIn, error, clearError } = useAuth();
+  const { user, loading, signIn, error, clearError } = useAuth();
   const [isIframe] = React.useState(window.self !== window.top);
+
+  if (!loading && user) {
+    return <Navigate to="/" replace />;
+  }
 
   return (
     <div className="h-screen w-screen flex flex-col lg:flex-row bg-white overflow-hidden">
@@ -134,7 +138,7 @@ function Login() {
 export default function App() {
   return (
     <AuthProvider>
-      <BrowserRouter>
+      <BrowserRouter basename={import.meta.env.BASE_URL}>
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />

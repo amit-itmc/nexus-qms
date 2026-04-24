@@ -31,8 +31,8 @@ import react from '@vitejs/plugin-react';
 import path from 'path';
 import { defineConfig } from 'vite';
 
-export default defineConfig({
-  base: "/nexus-qms/",   // ✅ required for GitHub Pages
+export default defineConfig(({ command }) => ({
+  base: command === 'build' ? '/nexus-qms/' : '/',
 
   plugins: [react(), tailwindcss()],
 
@@ -45,4 +45,4 @@ export default defineConfig({
   server: {
     hmr: process.env.DISABLE_HMR !== 'true',
   },
-});
+}));
